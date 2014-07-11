@@ -1,0 +1,4 @@
+include LICENSE requirements.txt requirements-dev.txt machete/build.info
+recursive-include machete/templates *
+recursive-include machete/static *
+recursive-exclude tests *

@@ -52,3 +52,9 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# vi temp files
+*.un~
+*.swp
+
+tests/cover
+tests/coverage.xml
