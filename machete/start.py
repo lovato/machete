@@ -19,7 +19,7 @@ def main():
         "--chicken", help="Chicken mode (optional). Does NOT CHANGE anything.",
         action="store_true")
     args = parser.parse_args()
-    
+
     try:
         module.main(args.template, args.chicken)
         exit(0)

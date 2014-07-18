@@ -65,7 +65,8 @@ def copy_files(template):
             template_files = os.listdir(template_path)
 
             for each in base_files:
-                copyanything(os.path.join(base_path, each), os.path.join(".", each))
+                copyanything(
+                    os.path.join(base_path, each), os.path.join(".", each))
             for each in template_files:
                 copyanything(os.path.join(template_path, each),
                              os.path.join(".", each))
@@ -137,7 +138,7 @@ def create_venv(project):
             env_path = os.getenv('WORKON_HOME', './.venv_')
             full_env_path = env_path
             if has_virtualenvwrapper():
-                full_env_path = os.path.join(env_path,project)
+                full_env_path = os.path.join(env_path, project)
                 os_call('virtualenv --clear ' + full_env_path)
             else:
                 if has_virtualenv():
@@ -161,13 +162,14 @@ def create_venv(project):
     except:
         return False
 
+
 def main(template, chicken):
     global is_chicken
     is_chicken = chicken
     if is_chicken:
         log.debug('RUNNING ON CHICKEN MODE')
         print('*** RUNNING ON CHICKEN MODE ***')
-    
+
     if os.listdir('.'):
         message = 'Current directory is not empty, so machete cannot run :-('
         log.warn(message)
