@@ -9,7 +9,7 @@ import argparse
 
 def main():
     log.info("machete v" + __version__)
-    parser = argparse.ArgumentParser(description='Sample Project')
+    parser = argparse.ArgumentParser(description='machete')
 
     parser.add_argument(
         '-t', '--template',

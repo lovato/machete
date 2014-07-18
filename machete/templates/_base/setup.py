@@ -71,7 +71,7 @@ setup(
     include_package_data=True,
     install_requires=read('requirements.txt'),
     license=read('LICENSE'),
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
     name=project_name,
     packages=find_packages(),
     platforms=['any'],
