@@ -6,6 +6,7 @@ from packagesample import __version__, log
 from packagesample.submodule import module
 import argparse
 
+
 def main():
     log.info("packagesample v" + __version__)
     parser = argparse.ArgumentParser(description='Sample Project')
@@ -13,8 +14,10 @@ def main():
     parser.add_argument(
         '-x', '--xunxo', help='Sample Required Parameter', required=True)
     parser.add_argument(
-        "--chicken", help="Chicken mode (optional). Only shows what to do. Does NOT CHANGE anything.", action="store_true")
-    args = parser.parse_args() #if required params are not met, program aborts here
+        "--chicken",
+        help="Chicken mode (optional). Does NOT CHANGE anything.",
+        action="store_true")
+    args = parser.parse_args()  # if required params arent met, program aborts
     try:
         module.main(args.xunxo, args.chicken)
         exit(0)
