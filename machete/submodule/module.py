@@ -9,6 +9,7 @@ is_chicken = False
 
 
 def os_call(path):
+    log.debug(path)
     proc = subprocess.Popen(path.split(' '), stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
     return out
@@ -52,24 +53,29 @@ def copyanything(src, dst):
 
 
 def copy_files(template):
-    path = os.path.abspath(os.path.join(
-        os.path.dirname(os.path.realpath(__file__)), "../templates"))
-    base_path = os.path.join(path, "_base")
-    template_path = os.path.join(path, template)
+    print ("Copying files from template...")
+    try:
+        if not is_chicken:
+            path = os.path.abspath(os.path.join(
+                os.path.dirname(os.path.realpath(__file__)), "../templates"))
+            base_path = os.path.join(path, "_base")
+            template_path = os.path.join(path, template)
 
-    base_files = os.listdir(base_path)
-    template_files = os.listdir(template_path)
+            base_files = os.listdir(base_path)
+            template_files = os.listdir(template_path)
 
-    # check for empty dir first, else abort
-
-    for each in base_files:
-        copyanything(os.path.join(base_path, each), os.path.join(".", each))
-    for each in template_files:
-        copyanything(os.path.join(template_path, each),
-                     os.path.join(".", each))
+            for each in base_files:
+                copyanything(os.path.join(base_path, each), os.path.join(".", each))
+            for each in template_files:
+                copyanything(os.path.join(template_path, each),
+                             os.path.join(".", each))
+        return True
+    except:
+        return False
 
 
 def git_init():
+    print ("Initializing GIT...")
     if not is_chicken:
         try:
             os_call('git init')
@@ -78,26 +84,36 @@ def git_init():
 
 
 def rename_files(project):
-    if not is_chicken:
-        shutil.move('packagesample', project)
-        shutil.move('docs/example/packagesample.cfg',
-                    'docs/example/' + project + '.cfg')
+    print ("Modifying copied files names...")
+    try:
+        if not is_chicken:
+            shutil.move('packagesample', project)
+            shutil.move('docs/example/packagesample.cfg',
+                        'docs/example/' + project + '.cfg')
+        return True
+    except:
+        return False
 
 
 def perform_replaces(project):
-    if not is_chicken:
-        files = ['setup.py', 'README.md', 'run.py', 'MANIFEST.in',
-                 'docs/source/changelog.rst', project+'/start.py',
-                 project+'/__init__.py', project+'/submodule/module.py',
-                 project+'/submodule/__init__.py', 'tests/test_version.py',
-                 'setup.cfg']
-        for each in files:
-            replace_infile('packagesample', project, each)
+    print ("Modifying copied files content...")
+    try:
+        if not is_chicken:
+            files = ['setup.py', 'README.md', 'run.py', 'MANIFEST.in',
+                     'docs/source/changelog.rst', project+'/start.py',
+                     project+'/__init__.py', project+'/submodule/module.py',
+                     project+'/submodule/__init__.py', 'tests/test_version.py',
+                     'setup.cfg']
+            for each in files:
+                replace_infile('packagesample', project, each)
+        return True
+    except:
+        return False
 
 
 def has_virtualenv():
     try:
-        return 'Usage' in os_call('virtualenv --help')
+        return 'Usage' in os_call('virtualenv')
     except:
         return False
 
@@ -113,30 +129,55 @@ def has_virtualenvwrapper():
         return False
 
 
-def create_env(project):
-    if not is_chicken:
-        if has_virtualenvwrapper():
-            os_call('mkvirtualenv --clear '+project)
-        else:
-            if has_virtualenv():
-                os_call('virtualenv .venv_'+project+'')
+def create_venv(project):
+    print ("Creating virtualenv...")
+    try:
+        if not is_chicken:
+            log.debug('Trying to create virtualenv')
+            env_path = os.getenv('WORKON_HOME', './.venv_')
+            full_env_path = env_path
+            if has_virtualenvwrapper():
+                full_env_path = os.path.join(env_path,project)
+                os_call('virtualenv --clear ' + full_env_path)
+            else:
+                if has_virtualenv():
+                    full_env_path = os.path.join(env_path + project)
+                    os_call('virtualenv ' + full_env_path)
 
-        if has_virtualenv():
-            if os.path.isfile('requirements.txt'):
-                os_call('pip install -r requirements.txt')
-            if os.path.isfile('requirements-dev.txt'):
-                os_call('pip install -r requirements-dev.txt')
+            print ("\nSUCCESS!!!")
 
+            activate = full_env_path + '/bin/activate'
+            if os.path.isfile(activate):
+                print("Please execute 'source " + activate + "' to enter into your virtualenv")
 
-def main(template, project, chicken):
+                if has_virtualenv():
+                    if os.path.isfile('requirements.txt'):
+                        print("Then please execute 'pip install -r requirements.txt'")
+                        # os_call('pip install -r requirements.txt')
+                    if os.path.isfile('requirements-dev.txt'):
+                        print("And after please execute 'pip install -r requirements-dev.txt'")
+                        # os_call('pip install -r requirements-dev.txt')
+        return True
+    except:
+        return False
+
+def main(template, chicken):
     global is_chicken
     is_chicken = chicken
     if is_chicken:
-        print('RUNNING ON CHICKEN MODE')
-    # check for complete empty dir first, else abort
+        log.debug('RUNNING ON CHICKEN MODE')
+        print('*** RUNNING ON CHICKEN MODE ***')
+    
+    if os.listdir('.'):
+        message = 'Current directory is not empty, so machete cannot run :-('
+        log.warn(message)
+        print(message)
+        exit(0)
 
+    project = os.path.basename(os.getcwd()).replace('-', '_')
     git_init()
-    copy_files(template)
-    rename_files(project)
-    perform_replaces(project)
-    create_venv(project)
+    if copy_files(template):
+        if rename_files(project):
+            if perform_replaces(project):
+                if create_venv(project):
+                    print ('\nmachete says: "Its done!"')

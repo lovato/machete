@@ -40,3 +40,5 @@ nosetests.xml
 
 tests/cover
 tests/coverage.xml
+
+.venv_*

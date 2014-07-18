@@ -7,19 +7,19 @@ It is currently in development, but is pretty usable if installed directly from 
 ##To install it:
 
 ```
-pip install -e git+https://github.com/lovato/machete.git
+sudo pip install -e git+https://github.com/lovato/machete.git
 ```
 
 When it becomes available at Pypi, it will be possible to install it directly from there, in a simpler way.
 
 ##Usage:
 
-First, create your target directory, and go there.
+First, create your target directory, and cd to it there.
 
-This directory must be empty.
+Note: This directory must be empty. If you need to re-run machete, please empty the current folder first.
 
 ```
-usage: machete [-h] -t TEMPLATE -p PROJECT [--chicken]
+usage: machete [-h] -t TEMPLATE [--chicken]
 
 machete
 
@@ -28,8 +28,6 @@ optional arguments:
   -t TEMPLATE, --template TEMPLATE
                         Select one of the available templates (TODO list them
                         here).
-  -p PROJECT, --project PROJECT
-                        Please specify how your project will be named.
   --chicken             Chicken mode (optional). Does NOT CHANGE anything.
 
 ```

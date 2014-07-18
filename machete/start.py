@@ -9,24 +9,19 @@ import argparse
 
 def main():
     log.info("machete v" + __version__)
-    parser = argparse.ArgumentParser(description='machete')
+    parser = argparse.ArgumentParser(description='machete v' + __version__)
 
     parser.add_argument(
         '-t', '--template',
         help='Select one of the available templates (TODO list them here).',
         required=True)
     parser.add_argument(
-        '-p', '--project',
-        help='Please specify how your project will be named.',
-        required=True)
-    parser.add_argument(
         "--chicken", help="Chicken mode (optional). Does NOT CHANGE anything.",
         action="store_true")
     args = parser.parse_args()
-    # if required params are not met, program aborts here
+    
     try:
-        module.main(args.template,
-                    args.project.replace('-', '_'), args.chicken)
+        module.main(args.template, args.chicken)
         exit(0)
     except Exception as e:
         import traceback

@@ -58,3 +58,5 @@ docs/_build/
 
 tests/cover
 tests/coverage.xml
+
+.venv_*

@@ -9,7 +9,7 @@ import argparse
 
 def main():
     log.info("packagesample v" + __version__)
-    parser = argparse.ArgumentParser(description='packagesample')
+    parser = argparse.ArgumentParser(description='packagesample v' + __version__)
 
     parser.add_argument(
         '-x', '--xunxo', help='Sample Required Parameter', required=True)
