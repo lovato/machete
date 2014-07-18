@@ -25,7 +25,7 @@ try:
 except ImportError:
     pass
 
-project_name = 'machete'
+project_name = 'packagesample'
 __version__ = __import__(project_name).__version__
 __author__ = __import__(project_name).__author__
 __description__ = __import__(project_name).__description__
@@ -65,13 +65,13 @@ setup(
     description=__description__,
     entry_points={
         'console_scripts': [
-            project_name + ' = ' + project_name + '.start:main'
+            project_name + '_app = ' + project_name + '.start:main'
         ]
     },
     include_package_data=True,
     install_requires=read('requirements.txt'),
     license=read('LICENSE'),
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     name=project_name,
     packages=find_packages(),
     platforms=['any'],

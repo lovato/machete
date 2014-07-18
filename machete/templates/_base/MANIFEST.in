@@ -1,0 +1,4 @@
+include LICENSE requirements.txt requirements-dev.txt packagesample/build.info
+recursive-include packagesample/templates *
+recursive-include packagesample/static *
+recursive-exclude tests *
