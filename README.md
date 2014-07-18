@@ -14,7 +14,7 @@ When it becomes available at Pypi, it will be possible to install it directly fr
 
 ##Usage:
 
-First, create your target directory, and cd to it there.
+First, create your target directory, and cd to it.
 
 Note: This directory must be empty. If you need to re-run machete, please empty the current folder first.
 
