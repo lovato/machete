@@ -7,7 +7,7 @@ It is currently in development, but is pretty usable if installed directly from 
 ##To install it:
 
 ```
-sudo pip install -e git+https://github.com/lovato/machete.git
+sudo pip install -e git+https://github.com/lovato/machete.git#egg=Package
 ```
 
 When it becomes available at Pypi, it will be possible to install it directly from there, in a simpler way.
