@@ -58,6 +58,7 @@ def copy_files(template):
         if not is_chicken:
             path = os.path.abspath(os.path.join(
                 os.path.dirname(os.path.realpath(__file__)), "../templates"))
+            print path
             base_path = os.path.join(path, "_base")
             template_path = os.path.join(path, template)
 
