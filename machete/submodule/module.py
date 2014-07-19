@@ -151,6 +151,7 @@ def create_venv(project):
             activate = full_env_path + '/bin/activate'
             if os.path.isfile(activate):
                 print("Please execute 'source " + activate + "' to enter into your virtualenv")
+                #http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
 
                 if has_virtualenv():
                     if os.path.isfile('requirements.txt'):
