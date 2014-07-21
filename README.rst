@@ -17,15 +17,15 @@ First, create your target directory, and cd to it.
 
 Note: This directory must be empty. If you need to re-run machete, please empty the current folder first.::
 
-    usage: machete [-h] -t TEMPLATE [--chicken]
+    usage: machete [-h] -t <template_name> [--chicken]
 
-    machete
+    machete vX
 
     optional arguments:
       -h, --help            show this help message and exit
-      -t TEMPLATE, --template TEMPLATE
-                            Select one of the available templates (TODO list them
-                            here).
+      -t <template_name>, --template <template_name>
+                            Select one of the available templates. Allowed values
+                            are: app, bootstrap or flask.
       --chicken             Chicken mode (optional). Does NOT CHANGE anything.
 
 =====

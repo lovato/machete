@@ -18,9 +18,13 @@ def main():
     for each in templates:
         print each
 
+    templates_str = ', '.join(templates)
+    k = templates_str.rfind(",")
+    templates_str = templates_str[:k] + " or" + templates_str[k+1:]
+
     parser.add_argument(
         '-t', '--template',
-        help='Select one of the available templates. Allowed values are '+', '.join(templates),
+        help='Select one of the available templates. Allowed values are: ' + templates_str + '.',
         metavar='<template_name>',
         choices=templates, 
         required=True)
