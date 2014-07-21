@@ -7,6 +7,7 @@ import subprocess
 
 is_chicken = False
 
+windows = os.name == 'nt'
 
 def os_call(path):
     log.debug(path)
@@ -129,8 +130,10 @@ def has_virtualenv():
 def has_virtualenvwrapper():
     if has_virtualenv():
         try:
-            # only works on linux
-            return '/usr' in os_call('which virtualenvwrapper.sh')
+            if not windows:
+                return '/usr' in os_call('which virtualenvwrapper.sh')
+            else:
+                return False
         except:
             return False
     else:
