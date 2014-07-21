@@ -28,6 +28,8 @@ except ImportError:
 project_name = 'machete'
 __version__ = __import__(project_name).__version__
 __author__ = __import__(project_name).__author__
+__author_email__ = __import__(project_name).__author_email__
+__author_username__ = __import__(project_name).__author_username__
 __description__ = __import__(project_name).__description__
 
 
@@ -60,9 +62,10 @@ CLASSIFIERS = [
 
 setup(
     author=__author__,
-    author_email='maglovato@gmail.com',
+    author_email=__author_email__,
     classifiers=CLASSIFIERS,
     description=__description__,
+    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__
     entry_points={
         'console_scripts': [
             project_name + ' = ' + project_name + '.start:main'
@@ -78,7 +81,7 @@ setup(
     scripts=[],
     test_suite='nose.collector',
     tests_require=read('requirements-dev.txt'),
-    url='http://pypi/packages/' + project_name,
+    url = 'https://github.com/' + __author_username__ + '/' + project_name,
     version=__version__,
     cmdclass={},
     zip_safe=True

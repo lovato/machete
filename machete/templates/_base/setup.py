@@ -28,6 +28,8 @@ except ImportError:
 project_name = 'packagesample'
 __version__ = __import__(project_name).__version__
 __author__ = __import__(project_name).__author__
+__author_email__ = __import__(project_name).__author_email__
+__author_username__ = __import__(project_name).__author_username__
 __description__ = __import__(project_name).__description__
 
 
@@ -78,7 +80,7 @@ setup(
     scripts=[],
     test_suite='nose.collector',
     tests_require=read('requirements-dev.txt'),
-    url='http://pypi/packages/' + project_name,
+    url = 'https://github.com/' + __author_username__ + '/' + project_name,
     version=__version__,
     cmdclass={},
     zip_safe=True
