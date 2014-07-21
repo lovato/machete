@@ -65,6 +65,7 @@ setup(
     author_email='maglovato@gmail.com',
     classifiers=CLASSIFIERS,
     description=__description__,
+    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__,
     entry_points={
         'console_scripts': [
             project_name + '_app = ' + project_name + '.start:main'

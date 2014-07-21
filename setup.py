@@ -65,7 +65,7 @@ setup(
     author_email=__author_email__,
     classifiers=CLASSIFIERS,
     description=__description__,
-    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__
+    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__,
     entry_points={
         'console_scripts': [
             project_name + ' = ' + project_name + '.start:main'
