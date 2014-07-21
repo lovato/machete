@@ -52,7 +52,10 @@ def read(fname):
     return ''
 
 
-CLASSIFIERS = []
+CLASSIFIERS = [
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 2.7"
+        ]
 
 setup(
     author=__author__,
@@ -68,7 +71,7 @@ setup(
     include_package_data=True,
     install_requires=read('requirements.txt'),
     license=read('LICENSE'),
-    long_description=read('README.md'),
+    long_description=read('README.rst'),
     name=project_name,
     packages=find_packages(),
     platforms=['any'],

@@ -1,2 +1,2 @@
-include LICENSE requirements.txt requirements-dev.txt packagesample/build.info
+include LICENSE requirements.txt packagesample/build.info
 recursive-exclude tests *
