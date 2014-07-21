@@ -15,9 +15,6 @@ def main():
         os.path.dirname(os.path.realpath(__file__)), "templates"))
     templates = [fn for fn in os.listdir(path) if any([not fn.startswith('_')])];
 
-    for each in templates:
-        print each
-
     templates_str = ', '.join(templates)
     k = templates_str.rfind(",")
     templates_str = templates_str[:k] + " or" + templates_str[k+1:]

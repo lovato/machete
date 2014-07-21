@@ -48,11 +48,8 @@ def copyanything(src, dst):
         #print('trying to copy from '+src+' to '+dst)
         try:
             shutil.copytree(src, dst)
-        except OSError as exc:  # python >2.5
-            if exc.errno == errno.ENOTDIR:
-                shutil.copy(src, dst)
-            else:
-                raise
+        except:
+            shutil.copy(src, dst)
     else:
         print('copy from '+src+' to '+dst)
 
@@ -61,8 +58,10 @@ def copy_files(template):
     print ("Copying files from template...")
     try:
         if not is_chicken:
-            path = os.path.abspath(os.path.join(
-                os.path.dirname(os.path.realpath(__file__)), "../templates"))
+            run_file = os.path.realpath(__file__)
+            run_folder = os.path.dirname(run_file)
+            path = os.path.join(os.path.dirname(run_folder), "templates")
+
             base_path = os.path.join(path, "_base")
             template_path = os.path.join(path, template)
 
@@ -107,7 +106,7 @@ def perform_replaces(project):
     print ("Modifying copied files content...")
     try:
         if not is_chicken:
-            files = ['setup.py', 'README.md', 'run.py', 'MANIFEST.in',
+            files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
                      'docs/source/changelog.rst', project+'/start.py',
                      project+'/__init__.py', project+'/submodule/module.py',
                      project+'/submodule/__init__.py', 'tests/test_version.py',
@@ -157,7 +156,13 @@ def create_venv(project):
 
             print ("\nSUCCESS!!!")
 
-            activate = full_env_path + '/bin/activate'
+            activateL = full_env_path + '/bin/activate'
+            activateW = full_env_path + '/Scripts/activate'
+            if windows:
+                activate = activateW
+            else:
+                activate = activateL
+                
             if os.path.isfile(activate):
                 print("Please execute 'source " + activate + "' to enter into your virtualenv")
                 #http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
