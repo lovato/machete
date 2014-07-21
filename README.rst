@@ -2,7 +2,6 @@ machete
 =======
 
 A simple python boilerplate - and multi template! - to start your python work.
-It is currently in development, but is pretty usable if installed directly from GitHub, if grabbed from master branch.
 
 To install it
 -------------
