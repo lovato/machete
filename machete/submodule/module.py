@@ -31,16 +31,20 @@ def replace_infile(lookfor, replace, text_file):
         outfile.close()
         shutil.move(text_file+'.tmp', text_file)
         return True
-    except:
+    except Exception,e:
+        print str(e)
         return False
 
 
 def copyanything(src, dst):
     if 'egg-info' in src:
         return True
-    if 'dist' in src:
+    if '/dist/' in src:
+        return True
+    if '.pyc' in src:
         return True
     if not is_chicken:
+        #print('trying to copy from '+src+' to '+dst)
         try:
             shutil.copytree(src, dst)
         except OSError as exc:  # python >2.5
@@ -49,7 +53,7 @@ def copyanything(src, dst):
             else:
                 raise
     else:
-        print('copy from '+src.split('machete')[2]+' to '+dst)
+        print('copy from '+src+' to '+dst)
 
 
 def copy_files(template):
@@ -58,7 +62,6 @@ def copy_files(template):
         if not is_chicken:
             path = os.path.abspath(os.path.join(
                 os.path.dirname(os.path.realpath(__file__)), "../templates"))
-            print path
             base_path = os.path.join(path, "_base")
             template_path = os.path.join(path, template)
 
@@ -72,7 +75,8 @@ def copy_files(template):
                 copyanything(os.path.join(template_path, each),
                              os.path.join(".", each))
         return True
-    except:
+    except Exception,e:
+        print str(e)
         return False
 
 
@@ -93,7 +97,8 @@ def rename_files(project):
             shutil.move('docs/example/packagesample.cfg',
                         'docs/example/' + project + '.cfg')
         return True
-    except:
+    except Exception,e:
+        print str(e)
         return False
 
 
@@ -109,7 +114,8 @@ def perform_replaces(project):
             for each in files:
                 replace_infile('packagesample', project, each)
         return True
-    except:
+    except Exception,e:
+        print str(e)
         return False
 
 
@@ -161,7 +167,8 @@ def create_venv(project):
                         print("And after please execute 'pip install -r requirements-dev.txt'")
                         # os_call('pip install -r requirements-dev.txt')
         return True
-    except:
+    except Exception,e:
+        print str(e)
         return False
 
 
