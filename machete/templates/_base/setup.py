@@ -52,13 +52,7 @@ def read(fname):
     return ''
 
 
-CLASSIFIERS = [
-    'Environment :: Library',
-    'Intended Audience :: Developers',
-    'Programming Language :: Python',
-    'Operating System :: OS Independent',
-    'Topic :: Internet :: WWW/HTTP',
-]
+CLASSIFIERS = []
 
 setup(
     author=__author__,
