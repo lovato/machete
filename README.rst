@@ -28,8 +28,15 @@ Note: This directory must be empty. If you need to re-run machete, please empty 
                             are: app, bootstrap or flask.
       --chicken             Chicken mode (optional). Does NOT CHANGE anything.
 
-=====
-Bugs?
-=====
 
-Please report any ussue or enhancement proposal on our Issue Tracker area.
+Contributions
+-------------
+
+Bug reports, fixes, or features? Feel free to open an issue or pull request any time.
+
+License
+--------
+
+Copyright (c) 2014 Marco Lovato Licensed under MIT_.
+
+.. _MIT: http://opensource.org/licenses/MIT

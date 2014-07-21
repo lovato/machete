@@ -23,8 +23,14 @@ Usage
       -h, --help            show this help message and exit
       --chicken             Chicken mode (optional). Does NOT CHANGE anything.
 
-=====
-Bugs?
-=====
+Contributions
+-------------
 
-Please report any ussue or enhancement proposal on our Issue Tracker area.
+Bug reports, fixes, or features? Feel free to open an issue or pull request any time.
+
+License
+--------
+
+Copyright (c) 2014 <YOUR_NAME> Licensed under MIT_.
+
+.. _MIT: http://opensource.org/licenses/MIT

@@ -70,7 +70,7 @@ setup(
     },
     include_package_data=True,
     install_requires=read('requirements.txt'),
-    license=read('LICENSE'),
+    license='MIT',
     long_description=read('README.rst'),
     name=project_name,
     packages=find_packages(),
