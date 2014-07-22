@@ -1,9 +1,12 @@
 # -*- coding: UTF-8 -*-
-from machete import __version__, log
+from machete import __version__, log, log_filename
 import shutil
 import errno
 import os
 import subprocess
+import stat
+import tempfile
+IGNORE_PATTERNS = ('*.pyc')
 
 is_chicken = False
 
@@ -36,23 +39,22 @@ def replace_infile(lookfor, replace, text_file):
         print str(e)
         return False
 
-
-def copyanything(src, dst):
-    if 'egg-info' in src:
-        return True
-    if '/dist/' in src:
-        return True
-    if '.pyc' in src:
-        return True
-    if not is_chicken:
-        #print('trying to copy from '+src+' to '+dst)
-        try:
-            shutil.copytree(src, dst)
-        except:
-            shutil.copy(src, dst)
-    else:
-        print('copy from '+src+' to '+dst)
-
+def copytree(src, dst, ignore=shutil.ignore_patterns(IGNORE_PATTERNS)):
+    #print('trying to copy from '+src+' to '+dst)
+    if not os.path.exists(dst):
+        os.makedirs(dst)
+        shutil.copystat(src, dst)
+    lst = os.listdir(src)
+    if ignore:
+        excl = ignore(src, lst)
+        lst = [x for x in lst if x not in excl]
+    for item in lst:
+        s = os.path.join(src, item)
+        d = os.path.join(dst, item)
+        if os.path.isdir(s):
+            copytree(s, d, ignore)
+        else:
+            shutil.copy2(s, d)
 
 def copy_files(template):
     print ("Copying files from template...")
@@ -65,15 +67,8 @@ def copy_files(template):
             base_path = os.path.join(path, "_base")
             template_path = os.path.join(path, template)
 
-            base_files = os.listdir(base_path)
-            template_files = os.listdir(template_path)
-
-            for each in base_files:
-                copyanything(
-                    os.path.join(base_path, each), os.path.join(".", each))
-            for each in template_files:
-                copyanything(os.path.join(template_path, each),
-                             os.path.join(".", each))
+            copytree(base_path, '.')
+            copytree(template_path, '.')
         return True
     except Exception,e:
         print str(e)
@@ -200,3 +195,5 @@ def main(template, chicken):
             if perform_replaces(project):
                 if create_venv(project):
                     print ('\nmachete says: "Its done!"')
+                    print ('\nAfter these steps, run your app with "python run.py"')
+                    print ('Check for the log file under '+tempfile.gettempdir())

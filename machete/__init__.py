@@ -5,16 +5,20 @@ import os
 import sys
 import logging
 import getpass
+import tempfile
 
 __version__ = '0.0.1'
 __author__ = 'Marco Lovato'
 __author_username__ = 'lovato'
 __author_email__ = 'maglovato@gmail.com'
 __description__ = 'A simple python boilerplate - and multi template! - to start your python work.'
+
+log_filename = os.path.join(tempfile.gettempdir(), 'machete-' + getpass.getuser() + '.log')
+
 log = logging
 log.basicConfig(level=logging.DEBUG,
                 format='%(asctime)s %(levelname)s %(message)s',
-                filename='/tmp/machete-' + getpass.getuser() + '.log',
+                filename=log_filename,
                 filemode='a')
 
 
