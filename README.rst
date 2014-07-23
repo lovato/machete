@@ -7,6 +7,7 @@ To install it
 -------------
 
 ::
+
     $ sudo pip install machete
 
 Usage
@@ -17,6 +18,7 @@ First, create your target directory, and cd to it.
 Note: This directory must be empty. If you need to re-run machete, please empty the current folder first.
 
 ::
+
     usage: machete [-h] -t <template_name> [--chicken]
 
     machete vX
