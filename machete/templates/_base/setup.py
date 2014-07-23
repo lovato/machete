@@ -9,7 +9,7 @@
     :contact: maglovato@gmail.com
     :license: Other/Proprietary, see LICENSE for details.
 """
-# pylint: HOOK-IGNORED
+# pep8: disable-msg=E501
 
 import os
 from setuptools import Command, setup, find_packages
@@ -59,7 +59,8 @@ setup(
     author_email='maglovato@gmail.com',
     classifiers=CLASSIFIERS,
     description=__description__,
-    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__,
+    download_url='https://github.com/{}/{}/tarball/{}'.format(
+        __author_username__, project_name, __version__),
     entry_points={
         'console_scripts': [
             project_name + '_app = ' + project_name + '.start:main'
@@ -75,7 +76,7 @@ setup(
     scripts=[],
     test_suite='nose.collector',
     tests_require=read('requirements-dev.txt'),
-    url = 'https://github.com/' + __author_username__ + '/' + project_name,
+    url='https://github.com/' + __author_username__ + '/' + project_name,
     version=__version__,
     cmdclass={},
     zip_safe=True

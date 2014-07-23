@@ -53,16 +53,17 @@ def read(fname):
 
 
 CLASSIFIERS = [
-        "Intended Audience :: Developers",
-        "Programming Language :: Python :: 2.7"
-        ]
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 2.7"
+]
 
 setup(
     author=__author__,
     author_email=__author_email__,
     classifiers=CLASSIFIERS,
     description=__description__,
-    download_url = 'https://github.com/' + __author_username__ + '/' + project_name + '/tarball/' + __version__,
+    download_url='https://github.com/{}/{}/tarball/{}'.format(
+        __author_username__, project_name, __version__),
     entry_points={
         'console_scripts': [
             project_name + ' = ' + project_name + '.start:main'
@@ -78,7 +79,7 @@ setup(
     scripts=[],
     test_suite='nose.collector',
     tests_require=read('requirements-dev.txt'),
-    url = 'https://github.com/' + __author_username__ + '/' + project_name,
+    url='https://github.com/' + __author_username__ + '/' + project_name,
     version=__version__,
     cmdclass={},
     zip_safe=True

@@ -6,9 +6,11 @@ from packagesample import __version__, log
 app = Flask(__name__)
 Bootstrap(app)
 
+
 @app.context_processor
 def get_title():
     return dict(get_title='packagesample v' + str(__version__))
+
 
 @app.route("/")
 def home():

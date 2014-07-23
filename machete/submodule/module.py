@@ -12,6 +12,7 @@ is_chicken = False
 
 windows = os.name == 'nt'
 
+
 def os_call(path):
     log.debug(path)
     proc = subprocess.Popen(path.split(' '), stdout=subprocess.PIPE)
@@ -22,7 +23,7 @@ def os_call(path):
 def replace_infile(lookfor, replace, text_file):
     try:
         infile = open(text_file)
-        outfile = open(text_file+'.tmp', 'w')
+        outfile = open(text_file + '.tmp', 'w')
 
         # replacements = {'zero':'0', 'temp':'bob', 'garbage':'nothing'}
         replacements = {lookfor: replace}
@@ -33,14 +34,15 @@ def replace_infile(lookfor, replace, text_file):
             outfile.write(line)
         infile.close()
         outfile.close()
-        shutil.move(text_file+'.tmp', text_file)
+        shutil.move(text_file + '.tmp', text_file)
         return True
-    except Exception,e:
+    except Exception, e:
         print str(e)
         return False
 
+
 def copytree(src, dst, ignore=shutil.ignore_patterns(IGNORE_PATTERNS)):
-    #print('trying to copy from '+src+' to '+dst)
+    # print('trying to copy from '+src+' to '+dst)
     if not os.path.exists(dst):
         os.makedirs(dst)
         shutil.copystat(src, dst)
@@ -56,6 +58,7 @@ def copytree(src, dst, ignore=shutil.ignore_patterns(IGNORE_PATTERNS)):
         else:
             shutil.copy2(s, d)
 
+
 def copy_files(template):
     print ("Copying files from template...")
     try:
@@ -70,7 +73,7 @@ def copy_files(template):
             copytree(base_path, '.')
             copytree(template_path, '.')
         return True
-    except Exception,e:
+    except Exception, e:
         print str(e)
         return False
 
@@ -92,7 +95,7 @@ def rename_files(project):
             shutil.move('docs/example/packagesample.cfg',
                         'docs/example/' + project + '.cfg')
         return True
-    except Exception,e:
+    except Exception, e:
         print str(e)
         return False
 
@@ -102,14 +105,14 @@ def perform_replaces(project):
     try:
         if not is_chicken:
             files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
-                     'docs/source/changelog.rst', project+'/start.py',
-                     project+'/__init__.py', project+'/submodule/module.py',
-                     project+'/submodule/__init__.py', 'tests/test_version.py',
+                     'docs/source/changelog.rst', project + '/start.py',
+                     project + '/__init__.py', project + '/submodule/module.py',
+                     project + '/submodule/__init__.py', 'tests/test_version.py',
                      'setup.cfg']
             for each in files:
                 replace_infile('packagesample', project, each)
         return True
-    except Exception,e:
+    except Exception, e:
         print str(e)
         return False
 
@@ -157,10 +160,10 @@ def create_venv(project):
                 activate = activateW
             else:
                 activate = activateL
-                
+
             if os.path.isfile(activate):
                 print("Please execute 'source " + activate + "' to enter into your virtualenv")
-                #http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
+                # http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
 
                 if has_virtualenv():
                     if os.path.isfile('requirements.txt'):
@@ -170,7 +173,7 @@ def create_venv(project):
                         print("And after please execute 'pip install -r requirements-dev.txt'")
                         # os_call('pip install -r requirements-dev.txt')
         return True
-    except Exception,e:
+    except Exception, e:
         print str(e)
         return False
 
@@ -196,4 +199,4 @@ def main(template, chicken):
                 if create_venv(project):
                     print ('\nmachete says: "Its done!"')
                     print ('\nAfter these steps, run your app with "python run.py"')
-                    print ('Check for the log file under '+tempfile.gettempdir())
+                    print ('Check for the log file under ' + tempfile.gettempdir())
