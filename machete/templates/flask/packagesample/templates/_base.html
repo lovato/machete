@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <link href="static/css/app.css" rel="stylesheet">
+    <title>{{ get_title }}</title>
+  </head>
+  <body>
+  <div id="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  </body>
+</html>
