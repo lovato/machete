@@ -13,3 +13,7 @@ def get_title():
 @app.route("/")
 def home():
     return render_template('start.html')
+
+
+def main():
+	app.run(host='0.0.0.0', port=5000, debug=True)
