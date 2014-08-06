@@ -15,7 +15,7 @@ def get_title():
 
 @app.route("/")
 def home():
-    return render_template('start.html', text = )
+    return render_template('start.html', text = module.main())
 
 
 def main():
