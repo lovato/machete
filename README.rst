@@ -1,7 +1,7 @@
 machete
 =======
 
-A simple python boilerplate - and multi template! - to start your python work.
+A command-line tool to create projects from templates, to start your python work.
 
 To install it
 -------------

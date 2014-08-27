@@ -106,8 +106,8 @@ def perform_replaces(project):
         if not is_chicken:
             files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
                      'docs/source/changelog.rst', project + '/start.py',
-                     project + '/__init__.py', project + '/submodule/module.py',
-                     project + '/submodule/__init__.py', 'tests/test_version.py',
+                     project + '/__init__.py', project + '/modules/module.py',
+                     project + '/modules/__init__.py', 'tests/test_version.py',
                      'setup.cfg']
             for each in files:
                 replace_infile('packagesample', project, each)

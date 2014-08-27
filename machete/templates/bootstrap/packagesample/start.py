@@ -2,6 +2,7 @@
 from flask import Flask, render_template
 from flask.ext.bootstrap import Bootstrap
 from packagesample import __version__, log
+from packagesample.modules import *
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -14,7 +15,7 @@ def get_title():
 
 @app.route("/")
 def home():
-    return render_template('start.html')
+    return render_template('start.html', text = module.main())
 
 
 def main():

@@ -3,7 +3,7 @@
 # pylint: disable=C0301
 
 from packagesample import __version__, log
-from packagesample.submodule import module
+from packagesample.modules import *
 import argparse
 
 
@@ -13,14 +13,39 @@ def main():
         description='packagesample v' + __version__)
 
     parser.add_argument(
-        '-x', '--xunxo', help='Sample Required Parameter', required=True)
+        '-x', '--xunxo', help='Sample NonRequired Parameter', required=False)
+
+    tasks = gittools.modules.__all__
+
+    try:
+        if len(tasks) > 1:
+            tasks_str = ', '.join(tasks)
+            k = tasks_str.rfind(",")
+            tasks_str = tasks_str[:k] + " or" + tasks_str[k + 1:]
+        else:
+            tasks_str = tasks[0]
+
+        parser.add_argument(
+            '-t', '--task',
+            help='Task to be performed. Allowed values are: ' + tasks_str + '.',
+            metavar='<task_name>',
+            choices=tasks,
+            required=True)
+    except:
+        pass
+
     parser.add_argument(
         "--chicken",
         help="Chicken mode (optional). Does NOT CHANGE anything.",
         action="store_true")
+
+    __chicken__ = args.chicken
+
     args = parser.parse_args()  # if required params arent met, program aborts
     try:
-        module.main(args.xunxo, args.chicken)
+        result = eval(args.task + '.main()')
+        result = 'RESULT for "' + args.task + '" = ' + result
+        log.debug(result)
         exit(0)
     except Exception as e:
         import traceback
