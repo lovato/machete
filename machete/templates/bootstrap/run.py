@@ -3,6 +3,5 @@
 
 # Run the server in development mode.
 
-from packagesample.start import app
-app.run(host='0.0.0.0', port=5000, debug=True)
-#start.main()
+from packagesample.start import app, main
+main()
