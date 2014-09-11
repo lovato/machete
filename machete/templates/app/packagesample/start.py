@@ -2,9 +2,9 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 
-from packagesample import __version__, log
-from packagesample.modules import *
+from packagesample import __version__, log, modules
 import argparse
+import __builtin__
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
     parser.add_argument(
         '-x', '--xunxo', help='Sample NonRequired Parameter', required=False)
 
-    tasks = gittools.modules.__all__
+    tasks = modules.__all__
 
     try:
         if len(tasks) > 1:
@@ -39,9 +39,9 @@ def main():
         help="Chicken mode (optional). Does NOT CHANGE anything.",
         action="store_true")
 
-    __chicken__ = args.chicken
-
     args = parser.parse_args()  # if required params arent met, program aborts
+    __builtin__.chicken = args.chicken
+
     try:
         result = eval(args.task + '.main()')
         result = 'RESULT for "' + args.task + '" = ' + result

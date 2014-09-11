@@ -2,9 +2,10 @@
 from flask import Flask, render_template
 from packagesample import __version__, log
 from packagesample.modules import *
+import __builtin__
 
 app = Flask(__name__)
-
+__builtin__.chicken = False
 
 @app.context_processor
 def get_title():
