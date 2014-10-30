@@ -5,11 +5,9 @@
 
     Setuptools/distutils commands to package installation.
 
-    :author: Marco Lovato
-    :contact: maglovato@gmail.com
     :license: Other/Proprietary, see LICENSE for details.
 """
-# pep8: disable-msg=E501
+# pylint: HOOK-IGNORED
 
 import os
 from setuptools import Command, setup, find_packages
