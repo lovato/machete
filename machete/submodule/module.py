@@ -162,15 +162,18 @@ def create_venv(project):
                 activate = activateL
 
             if os.path.isfile(activate):
-                print("Please execute 'source " + activate + "' to enter into your virtualenv")
+                print("Please execute 'source " + activate +
+                      "' to enter into your virtualenv")
                 # http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
 
                 if has_virtualenv():
                     if os.path.isfile('requirements.txt'):
-                        print("Then please execute 'pip install -r requirements.txt'")
+                        print("Then please execute \
+                              'pip install -r requirements.txt'")
                         # os_call('pip install -r requirements.txt')
                     if os.path.isfile('requirements-dev.txt'):
-                        print("And after please execute 'pip install -r requirements-dev.txt'")
+                        print("And after please execute \
+                              'pip install -r requirements-dev.txt'")
                         # os_call('pip install -r requirements-dev.txt')
         return True
     except Exception, e:
@@ -198,5 +201,7 @@ def main(template, chicken):
             if perform_replaces(project):
                 if create_venv(project):
                     print ('\nmachete says: "Its done!"')
-                    print ('\nAfter these steps, run your app with "python run.py"')
-                    print ('Check for the log file under ' + tempfile.gettempdir())
+                    print ('\nAfter these steps, run your \
+                           app with "python run.py"')
+                    print ('Check for the log file under ' +
+                           tempfile.gettempdir())

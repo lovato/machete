@@ -14,17 +14,18 @@ def main():
 
     path = os.path.abspath(os.path.join(
         os.path.dirname(os.path.realpath(__file__)), "templates"))
-    templates = [fn for fn in os.listdir(path) if any([not fn.startswith('_')])]
+    tpls = [fn for fn in os.listdir(path) if any([not fn.startswith('_')])]
 
-    templates_str = ', '.join(templates)
+    templates_str = ', '.join(tpls)
     k = templates_str.rfind(",")
     templates_str = templates_str[:k] + " or" + templates_str[k + 1:]
 
     parser.add_argument(
         '-t', '--template',
-        help='Select one of the available templates. Allowed values are: ' + templates_str + '.',
+        help='Select one of the available templates. \
+             Allowed values are: ' + templates_str + '.',
         metavar='<template_name>',
-        choices=templates,
+        choices=tpls,
         required=True)
     parser.add_argument(
         "--chicken", help="Chicken mode (optional). Does NOT CHANGE anything.",
