@@ -3,5 +3,5 @@
 
 # Run the server in development mode.
 
-from packagesample.start import app, main
+from packagesample.start import main
 main()

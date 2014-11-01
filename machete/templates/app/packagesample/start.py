@@ -27,7 +27,7 @@ def main():
 
         parser.add_argument(
             '-t', '--task',
-            help='Task to be performed. Allowed values are: ' + tasks_str + '.',
+            help='Task to be performed. Allowed values: ' + tasks_str + '.',
             metavar='<task_name>',
             choices=tasks,
             required=True)

@@ -2,15 +2,14 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 import os
-import sys
 import logging
 import getpass
 import tempfile
 
 __version__ = '0.0.1'
-__author__ = 'Marco Lovato'
-__author_username__ = 'lovato'
-__author_email__ = 'maglovato@gmail.com'
+__author__ = 'Your Name'
+__author_username__ = 'your_username'
+__author_email__ = 'yourname@gmail.com'
 __description__ = 'Generated from a template'
 __chicken__ = False
 
