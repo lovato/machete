@@ -1,6 +1,9 @@
 machete
 =======
 
+.. image:: https://travis-ci.org/lovato/machete.png?branch=master
+    :target: https://travis-ci.org/lovato/machete
+    
 A command-line tool to create projects from templates, to start your python work.
 
 To install it
