@@ -192,7 +192,7 @@ def main(template, chicken):
         message = 'Current directory is not empty, so machete cannot run :-('
         log.warn(message)
         print(message)
-        exit(0)
+        exit(1)
 
     project = os.path.basename(os.getcwd()).replace('-', '_')
     git_init()

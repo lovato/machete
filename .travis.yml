@@ -1,16 +1,26 @@
 language: python
+
 python:
 - '2.6'
 - '2.7'
+- '3.2'
+- '3.3'
+- '3.4'
+
 install:
 - pip install -r requirements.txt
 - pip install -r requirements-dev.txt
+
 script:
+- cat /home/travis/build/lovato/machete/build.info
 - pep8
 - nosetests
+- echo $TRAVIS_BUILD_NUMBER
 - echo $TRAVIS_BUILD_NUMBER > /home/travis/build/lovato/machete/build.info
 - mkdir /tmp/lalala
 - ls /tmp
+- cat /home/travis/build/lovato/machete/build.info
+
 deploy:
   provider: pypi
   server: https://testpypi.python.org/pypi
@@ -19,3 +29,6 @@ deploy:
     secure: xrJxZMnzeXHszYt1g7xLiPzxkHbsP2Tjj6fjvDK3iPMN0wlnGfhDmYEV5cVPMzkpTi1T9mtatoB2BjTDZL7fuEdSv59mvP39soj8qqj/i6opOCQqepvDPRMaCCq7hT/ViUcgSho9h5NBTiHvblhtrOic+hZTVVjt2nG4uCP2af0=
   on:
     repo: lovato/machete
+
+notifications:
+    email: true
