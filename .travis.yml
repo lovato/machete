@@ -16,9 +16,6 @@ script:
 - pep8
 - nosetests
 
-before_deploy:
-- echo $TRAVIS_BUILD_NUMBER > /home/travis/build/lovato/machete/machete/build.info
-
 deploy:
   provider: pypi
   server: https://testpypi.python.org/pypi
