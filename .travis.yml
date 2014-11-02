@@ -1,12 +1,20 @@
 language: python
 python:
-  - "2.6"
-  - "2.7"
-# command to install dependencies
+- '2.6'
+- '2.7'
 install:
-  - "pip install -r requirements.txt"
-  - "pip install -r requirements-dev.txt"
-# command to run tests
+- pip install -r requirements.txt
+- pip install -r requirements-dev.txt
 script:
-  - pep8
-  - nosetests
+- pep8
+- nosetests
+- echo $TRAVIS_BUILD_NUMBER > machete/build.info
+- ls /tmp
+deploy:
+  provider: pypi
+  server: https://testpypi.python.org/pypi
+  user: marco.lovato
+  password:
+    secure: xrJxZMnzeXHszYt1g7xLiPzxkHbsP2Tjj6fjvDK3iPMN0wlnGfhDmYEV5cVPMzkpTi1T9mtatoB2BjTDZL7fuEdSv59mvP39soj8qqj/i6opOCQqepvDPRMaCCq7hT/ViUcgSho9h5NBTiHvblhtrOic+hZTVVjt2nG4uCP2af0=
+  on:
+    repo: lovato/machete

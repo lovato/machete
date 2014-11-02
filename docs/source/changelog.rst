@@ -2,6 +2,7 @@
 Changelog
 =========
 
-Changes in machete-0.0.1.1 (2000-01-01)
+Changes in machete-0.0.2 (2014-11-01)
 =======================================
-    - Fixed xyz
+    - Integration with Travis-CI
+    - Fixes for PEP8
