@@ -16,6 +16,13 @@ To install it
 
     $ sudo pip install machete
 
+Availability
+------------
+
+Production module is available from https://pypi.python.org/pypi/machete/, and development branch is also published by Travis-CI to https://testpypi.python.org/pypi/machete/
+
+Both can be downloaded and installed via the pip command.
+
 Usage
 -----
 
