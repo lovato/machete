@@ -1,9 +1,15 @@
 machete
 =======
 
+.. image:: https://badge.fury.io/py/machete.png
+    :target: http://badge.fury.io/py/machete
+
 .. image:: https://travis-ci.org/lovato/machete.png?branch=develop
     :target: https://travis-ci.org/lovato/machete
 
+.. image:: https://pypip.in/d/machete/badge.png
+        :target: https://crate.io/packages/machete?version=latest
+        
 .. image:: https://coveralls.io/repos/lovato/machete/badge.png?branch=develop 
    :target: https://coveralls.io/r/lovato/machete?branch=develop
 
