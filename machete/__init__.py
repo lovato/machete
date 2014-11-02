@@ -27,11 +27,6 @@ log.basicConfig(level=logging.DEBUG,
 def __path(filename):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), filename)
 
-if os.getenv("TRAVIS_BUILD_NUMBER"):
-    file_ = open('build.info', 'w')
-    file_.write(os.getenv("TRAVIS_BUILD_NUMBER"))
-    file_.close()
-
 if os.path.exists(__path('build.info')):
     __build__ = open(__path('build.info')).read().strip()
 else:
