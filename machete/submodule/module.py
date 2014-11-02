@@ -60,7 +60,7 @@ def copytree(src, dst, ignore=shutil.ignore_patterns(IGNORE_PATTERNS)):
 
 
 def copy_files(template):
-    print ("Copying files from template...")
+    print("Copying files from template...")
     try:
         if not is_chicken:
             run_file = os.path.realpath(__file__)
@@ -79,7 +79,7 @@ def copy_files(template):
 
 
 def git_init():
-    print ("Initializing GIT...")
+    print("Initializing GIT...")
     if not is_chicken:
         try:
             os_call('git init')
@@ -88,7 +88,7 @@ def git_init():
 
 
 def rename_files(project):
-    print ("Modifying copied files names...")
+    print("Modifying copied files names...")
     try:
         if not is_chicken:
             shutil.move('packagesample', project)
@@ -101,7 +101,7 @@ def rename_files(project):
 
 
 def perform_replaces(project):
-    print ("Modifying copied files content...")
+    print("Modifying copied files content...")
     try:
         if not is_chicken:
             files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
@@ -152,7 +152,7 @@ def create_venv(project):
                     full_env_path = os.path.join(env_path + project)
                     os_call('virtualenv ' + full_env_path)
 
-            print ("\nSUCCESS!!!")
+            print("\nSUCCESS!!!")
 
             activateL = full_env_path + '/bin/activate'
             activateW = full_env_path + '/Scripts/activate'
@@ -200,8 +200,8 @@ def main(template, chicken):
         if rename_files(project):
             if perform_replaces(project):
                 if create_venv(project):
-                    print ('\nmachete says: "Its done!"')
-                    print ('\nAfter these steps, run your \
+                    print('\nmachete says: "Its done!"')
+                    print('\nAfter these steps, run your \
                            app with "python run.py"')
-                    print ('Check for the log file under ' +
+                    print('Check for the log file under ' +
                            tempfile.gettempdir())

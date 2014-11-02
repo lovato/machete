@@ -6,13 +6,15 @@ python:
 - '3.2'
 - '3.3'
 - '3.4'
+- 'pypy'
 
 install:
 - pip install -r requirements.txt
 - pip install -r requirements-dev.txt
 
 script:
-- cat /home/travis/build/lovato/machete/build.info
+- pwd
+- ls -las
 - pep8
 - nosetests
 - echo $TRAVIS_BUILD_NUMBER
