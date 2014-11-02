@@ -138,7 +138,7 @@ def has_virtualenvwrapper():
 
 
 def create_venv(project):
-    print ("Creating virtualenv...")
+    print("Creating virtualenv...")
     try:
         if not is_chicken:
             log.debug('Trying to create virtualenv')
