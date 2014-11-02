@@ -3,6 +3,8 @@ machete
 
 .. image:: https://travis-ci.org/lovato/machete.png?branch=master
     :target: https://travis-ci.org/lovato/machete
+
+[ ![Codeship Status for lovato/machete](https://codeship.io/projects/dbb05650-44ca-0132-43bc-1e738e05cfd5/status)](https://codeship.io/projects/44872)
     
 A command-line tool to create projects from templates, to start your python work.
 
