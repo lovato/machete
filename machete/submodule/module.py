@@ -202,6 +202,6 @@ def main(template, chicken):
                 if create_venv(project):
                     print('\nmachete says: "Its done!"')
                     print('\nAfter these steps, run your \
-                           app with "python run.py"')
+                          app with "python run.py"')
                     print('Check for the log file under ' +
-                           tempfile.gettempdir())
+                          tempfile.gettempdir())

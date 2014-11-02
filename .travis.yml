@@ -13,15 +13,14 @@ install:
 - pip install -r requirements-dev.txt
 
 script:
-- pwd
-- ls -las
+- cat /home/travis/build/lovato/machete/machete/build.info
 - pep8
 - nosetests
 - echo $TRAVIS_BUILD_NUMBER
-- echo $TRAVIS_BUILD_NUMBER > /home/travis/build/lovato/machete/build.info
+- echo $TRAVIS_BUILD_NUMBER > /home/travis/build/lovato/machete/machete/build.info
 - mkdir /tmp/lalala
 - ls /tmp
-- cat /home/travis/build/lovato/machete/build.info
+- cat /home/travis/build/lovato/machete/machete/build.info
 
 deploy:
   provider: pypi
