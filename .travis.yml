@@ -8,7 +8,8 @@ install:
 script:
 - pep8
 - nosetests
-- echo $TRAVIS_BUILD_NUMBER > machete/build.info
+- echo $TRAVIS_BUILD_NUMBER > /home/travis/build/lovato/machete/build.info
+- mkdir /tmp/lalala
 - ls /tmp
 deploy:
   provider: pypi
