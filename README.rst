@@ -1,11 +1,11 @@
 machete
 =======
 
-.. image:: https://travis-ci.org/lovato/machete.png?branch=master
+.. image:: https://travis-ci.org/lovato/machete.png?branch=develop
     :target: https://travis-ci.org/lovato/machete
 
-.. image:: https://coveralls.io/repos/lovato/machete/badge.png?branch=master 
-   :target: https://coveralls.io/r/lovato/machete?branch=master
+.. image:: https://coveralls.io/repos/lovato/machete/badge.png?branch=develop 
+   :target: https://coveralls.io/r/lovato/machete?branch=develop
 
 A command-line tool to create projects from templates, to start your python work.
 
@@ -15,6 +15,13 @@ To install it
 ::
 
     $ sudo pip install machete
+
+Availability
+------------
+
+Production module is available from https://pypi.python.org/pypi/machete/, and development branch is also published by Travis-CI to https://testpypi.python.org/pypi/machete/
+
+Both can be downloaded and installed via the pip command.
 
 Usage
 -----
