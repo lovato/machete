@@ -102,13 +102,12 @@ def perform_replaces(project):
     print("Modifying copied files content...")
     try:
         if not is_chicken:
-            files = os.listdir('.')
-            # files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
-            #          'docs/source/changelog.rst', project + '/start.py',
-            #          project + '/__init__.py', project + '/modules/module.py',
-            #          project + '/modules/__init__.py', 'tests/test_version.py',
-            #          'setup.cfg']
-            for each in files:
+            cfiles = []
+            for root, dirs, files in os.walk('.'):
+                for file in files:
+                    if file.endswith('.py') or file.endswith('.rst') or file.endswith('.in'):
+                        cfiles.append(os.path.join(root, file))
+            for each in cfiles:
                 replace_infile('packagesample', project, each)
         return True
     except Exception, e:
