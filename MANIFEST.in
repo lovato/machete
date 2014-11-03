@@ -1,3 +1,15 @@
-include LICENSE requirements.txt machete/build.info
+include LICENSE
+include requirements.txt
+include machete/build.info
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+
 recursive-include machete/templates *
 recursive-exclude tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include conf docs *.rst conf.py Makefile make.bat

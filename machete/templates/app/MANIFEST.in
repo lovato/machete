@@ -1,2 +1,14 @@
-include LICENSE requirements.txt packagesample/build.info
+include LICENSE
+include requirements.txt
+include packagesample/build.info
+include AUTHORS.rst
+include CONTRIBUTING.rst
+include HISTORY.rst
+include LICENSE
+include README.rst
+
 recursive-exclude tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include conf docs *.rst conf.py Makefile make.bat
