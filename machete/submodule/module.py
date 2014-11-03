@@ -92,8 +92,6 @@ def rename_files(project):
     try:
         if not is_chicken:
             shutil.move('packagesample', project)
-            shutil.move('docs/example/packagesample.cfg',
-                        'docs/example/' + project + '.cfg')
         return True
     except Exception, e:
         print str(e)
@@ -104,11 +102,12 @@ def perform_replaces(project):
     print("Modifying copied files content...")
     try:
         if not is_chicken:
-            files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
-                     'docs/source/changelog.rst', project + '/start.py',
-                     project + '/__init__.py', project + '/modules/module.py',
-                     project + '/modules/__init__.py', 'tests/test_version.py',
-                     'setup.cfg']
+            files = os.listdir('.')
+            # files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
+            #          'docs/source/changelog.rst', project + '/start.py',
+            #          project + '/__init__.py', project + '/modules/module.py',
+            #          project + '/modules/__init__.py', 'tests/test_version.py',
+            #          'setup.cfg']
             for each in files:
                 replace_infile('packagesample', project, each)
         return True
