@@ -3,5 +3,5 @@
 
 # Run the app
 
-from packagesample import start
+from machete import start
 start.main()
