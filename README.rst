@@ -4,7 +4,7 @@ machete
 .. image:: https://pypip.in/version/machete/badge.png
     :target: http://badge.fury.io/py/machete
 
-.. image:: https://travis-ci.org/lovato/machete.png?branch=develop
+.. image:: https://travis-ci.org/lovato/machete.png
     :target: https://travis-ci.org/lovato/machete
 
 .. image:: https://pypip.in/py_versions/machete/badge.png
