@@ -37,6 +37,9 @@ coverage.xml
 # Translations
 *.mo
 
+# PyCharm
+.idea/
+
 # Mr Developer
 .mr.developer.cfg
 .project
