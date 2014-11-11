@@ -2,7 +2,8 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 
-from machete import __version__, log
+from machete import __version__
+from machete import log
 from machete.submodule import module
 import argparse
 import os
