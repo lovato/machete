@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Jonathan Prates <jonathansimonprates@gmail.com>
+
