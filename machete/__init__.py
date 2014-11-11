@@ -2,7 +2,6 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 import os
-import sys
 import logging
 import getpass
 import tempfile

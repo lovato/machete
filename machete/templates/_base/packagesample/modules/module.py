@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
-from packagesample import __version__, __chicken__, log
+from machete import __version__
+from machete import log
 import __builtin__
 
 

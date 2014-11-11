@@ -1,10 +1,12 @@
 # -*- coding: UTF-8 -*-
-from machete import __version__, log, log_filename
+# from machete import __version__
+from machete import log
+# from machete import log_filename
 import shutil
-import errno
+# import errno
 import os
 import subprocess
-import stat
+# import stat
 import tempfile
 IGNORE_PATTERNS = ('*.pyc')
 
@@ -105,7 +107,11 @@ def perform_replaces(project):
             cfiles = []
             for root, dirs, files in os.walk('.'):
                 for file in files:
-                    if file.endswith('.py') or file.endswith('.rst') or file.endswith('.in'):
+                    if file.endswith('.py'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.rst'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.in'):
                         cfiles.append(os.path.join(root, file))
             for each in cfiles:
                 replace_infile('packagesample', project, each)

@@ -35,7 +35,7 @@ def main():
     try:
         module.main(args.template, args.chicken)
         exit(0)
-    except Exception as e:
+    except Exception:
         import traceback
         log.error(traceback.format_exc())
         exit(1)
