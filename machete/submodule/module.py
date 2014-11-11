@@ -155,15 +155,7 @@ def create_venv(project):
     try:
         if not is_chicken:
             log.debug('Creating virtualenv')
-            # env_path = os.getenv('WORKON_HOME', './.venv_')
-            # full_env_path = env_path
-            # if has_virtualenvwrapper():
-            #     full_env_path = os.path.join(env_path, project)
-            #     os_call('virtualenv --clear ' + full_env_path)
-            # else:
-            #     if has_virtualenv():
-            #         full_env_path = os.path.join(env_path + project)
-            #         os_call('virtualenv ' + full_env_path)
+
             venv_path = os.path.join(os.getenv("HOME"), '.virtualenvs')
             try:
                 os.makedirs(venv_path)
@@ -174,26 +166,6 @@ def create_venv(project):
 
             print("\nSUCCESS!!!")
 
-            # activateL = full_env_path + '/bin/activate'
-            # activateW = full_env_path + '/Scripts/activate'
-            # if windows:
-            #     activate = activateW
-            # else:
-            #     activate = activateL
-
-            # if os.path.isfile(activate):
-            #     print("Please execute 'source " + activate +
-            #           "' to enter into your virtualenv")
-            #     # http://stackoverflow.com/questions/6943208/
-            #     # activate-a-virtualenv-with-a-python-script
-
-                # if has_virtualenv():
-                #     if os.path.isfile('requirements.txt'):
-                #         print("Do a 'pip install -r requirements.txt'")
-                #         # os_call('pip install -r requirements.txt')
-                #     if os.path.isfile('requirements-dev.txt'):
-                #         print("Then a 'pip install -r requirements-dev.txt'")
-                #         # os_call('pip install -r requirements-dev.txt')
             print("Installing dependencies... please wait a while.")
             os_call('vex ' + project + ' pip install -r requirements.txt')
             print("Now development depencencies...")
