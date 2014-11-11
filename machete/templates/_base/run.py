@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-# Run the server in development mode.
+# Run the app
 
 from packagesample import start
 start.main()

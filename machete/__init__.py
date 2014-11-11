@@ -2,14 +2,13 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 import os
-import sys
 import logging
 import getpass
 import tempfile
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 __author__ = 'Marco Lovato'
-__author_username__ = 'lovato'
+__author_username__ = 'marco.lovato'
 __author_email__ = 'maglovato@gmail.com'
 __description__ = 'A command-line tool to create projects \
                   from templates, to start your python work.'
@@ -27,6 +26,13 @@ log.basicConfig(level=logging.DEBUG,
 def __path(filename):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), filename)
 
+# Jenkins
+if os.getenv("BUILD_NUMBER"):
+    file_ = open(__path('build.info'), 'w')
+    file_.write(os.getenv("TRAVIS_BUILD_NUMBER"))
+    file_.close()
+
+# Travis
 if os.getenv("TRAVIS_BUILD_NUMBER"):
     file_ = open(__path('build.info'), 'w')
     file_.write(os.getenv("TRAVIS_BUILD_NUMBER"))

@@ -10,18 +10,9 @@
 # pylint: HOOK-IGNORED
 
 import os
-from setuptools import Command, setup, find_packages
-import string
-import re
-from distutils.version import StrictVersion
-from subprocess import Popen, PIPE, STDOUT, call
+from setuptools import setup
+from setuptools import find_packages
 import subprocess
-
-# Hack to silence atexit traceback in newer python versions
-try:
-    import multiprocessing
-except ImportError:
-    pass
 
 project_name = 'packagesample'
 __version__ = __import__(project_name).__version__

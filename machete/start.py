@@ -2,7 +2,8 @@
 # pep8: disable-msg=E501
 # pylint: disable=C0301
 
-from machete import __version__, log
+from machete import __version__
+from machete import log
 from machete.submodule import module
 import argparse
 import os
@@ -35,7 +36,7 @@ def main():
     try:
         module.main(args.template, args.chicken)
         exit(0)
-    except Exception as e:
+    except Exception:
         import traceback
         log.error(traceback.format_exc())
         exit(1)
