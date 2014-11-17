@@ -120,7 +120,13 @@ def perform_replaces(project):
                         cfiles.append(os.path.join(root, file))
                     if file.endswith('.rst'):
                         cfiles.append(os.path.join(root, file))
+                    if file.endswith('.cfg'):
+                        cfiles.append(os.path.join(root, file))
                     if file.endswith('.in'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.venv'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.coveragerc'):
                         cfiles.append(os.path.join(root, file))
             for each in cfiles:
                 suffix = '{{ packagesample'
@@ -172,13 +178,13 @@ def create_venv(project):
             full_venv_path = os.path.join(venv_path, project)
             os_call('virtualenv ' + full_venv_path)
 
-            print("\nSUCCESS!!!")
+            print("Virtualenv created!!!\n")
 
-            print("Installing dependencies... please wait a while.")
+            print("Installing dependencies...")
             os_call('vex ' + project + ' pip install -r requirements.txt')
-            print("Now development depencencies...")
+            print("Now installing development depencencies... please wait a bit more.")
             os_call('vex ' + project + ' pip install -r requirements-dev.txt')
-            print("Done.")
+            print("Installed!")
 
         return True
     except Exception, e:
@@ -205,7 +211,7 @@ def main(template, chicken):
         if rename_files(project):
             if perform_replaces(project):
                 if create_venv(project):
-                    print('\nmachete says: "Its done!"')
+                    print('\nIts done!')
                     print('\nRun with "vex ' + project + ' python run.py"')
                     print('Check for the log file under ' +
                           tempfile.gettempdir())
