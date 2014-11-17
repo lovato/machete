@@ -6,7 +6,7 @@ import logging
 import getpass
 import tempfile
 
-__version__ = '0.0.1'
+__version__ = '{{ packagesample.version }}'
 __author__ = 'Your Name'
 __author_username__ = 'your_username'
 __author_email__ = 'yourname@gmail.com'

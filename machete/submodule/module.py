@@ -123,6 +123,14 @@ def perform_replaces(project):
                     if file.endswith('.in'):
                         cfiles.append(os.path.join(root, file))
             for each in cfiles:
+                suffix = '{{ packagesample'
+                replace_infile(suffix + ' }}', project, each)
+                replace_infile(suffix + '.version }}', '0.0.1', each)
+                replace_infile(suffix + '.release_date }}', '2014', each)
+                replace_infile(suffix + '.repo_name }}', project, each)
+                replace_infile(suffix + '.project_name', 'Tha Project', each)
+                replace_infile(suffix + '.full_name', 'Your Name', each)
+                replace_infile(suffix + '.year', '2014', each)
                 replace_infile('packagesample', project, each)
         return True
     except Exception, e:
