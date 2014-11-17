@@ -1,0 +1,3 @@
+[run]
+source = packagesample
+omit = *docs*, packagesample/setup.py

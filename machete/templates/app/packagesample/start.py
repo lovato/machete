@@ -48,7 +48,7 @@ def main():
         result = 'RESULT for "' + args.task + '" = ' + result
         log.debug(result)
         exit(0)
-    except Exception as e:
+    except Exception:
         import traceback
         log.error(traceback.format_exc())
         exit(1)

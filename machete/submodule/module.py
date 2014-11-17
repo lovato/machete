@@ -1,10 +1,12 @@
 # -*- coding: UTF-8 -*-
-from machete import __version__, log, log_filename
+# from machete import __version__
+from machete import log
+# from machete import log_filename
 import shutil
-import errno
+# import errno
 import os
 import subprocess
-import stat
+# import stat
 import tempfile
 IGNORE_PATTERNS = ('*.pyc')
 
@@ -87,13 +89,20 @@ def git_init():
             pass  # thats ok, you can sort of live without git
 
 
+def git_add_commit():
+    if not is_chicken:
+        try:
+            os_call('git add .')
+            os_call('git commit . -m "Initial commit"')
+        except:
+            pass  # thats ok, you can sort of live without git
+
+
 def rename_files(project):
     print("Modifying copied files names...")
     try:
         if not is_chicken:
             shutil.move('packagesample', project)
-            shutil.move('docs/example/packagesample.cfg',
-                        'docs/example/' + project + '.cfg')
         return True
     except Exception, e:
         print str(e)
@@ -104,12 +113,30 @@ def perform_replaces(project):
     print("Modifying copied files content...")
     try:
         if not is_chicken:
-            files = ['setup.py', 'README.rst', 'run.py', 'MANIFEST.in',
-                     'docs/source/changelog.rst', project + '/start.py',
-                     project + '/__init__.py', project + '/modules/module.py',
-                     project + '/modules/__init__.py', 'tests/test_version.py',
-                     'setup.cfg']
-            for each in files:
+            cfiles = []
+            for root, dirs, files in os.walk('.'):
+                for file in files:
+                    if file.endswith('.py'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.rst'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.cfg'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.in'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.venv'):
+                        cfiles.append(os.path.join(root, file))
+                    if file.endswith('.coveragerc'):
+                        cfiles.append(os.path.join(root, file))
+            for each in cfiles:
+                suffix = '{{ packagesample'
+                replace_infile(suffix + ' }}', project, each)
+                replace_infile(suffix + '.version }}', '0.0.1', each)
+                replace_infile(suffix + '.release_date }}', '2014', each)
+                replace_infile(suffix + '.repo_name }}', project, each)
+                replace_infile(suffix + '.project_name', 'Tha Project', each)
+                replace_infile(suffix + '.full_name', 'Your Name', each)
+                replace_infile(suffix + '.year', '2014', each)
                 replace_infile('packagesample', project, each)
         return True
     except Exception, e:
@@ -117,64 +144,48 @@ def perform_replaces(project):
         return False
 
 
-def has_virtualenv():
-    try:
-        return 'Usage' in os_call('virtualenv')
-    except:
-        return False
+# def has_virtualenv():
+#     try:
+#         return 'Usage' in os_call('virtualenv')
+#     except:
+#         return False
 
 
-def has_virtualenvwrapper():
-    if has_virtualenv():
-        try:
-            if not windows:
-                return '/usr' in os_call('which virtualenvwrapper.sh')
-            else:
-                return False
-        except:
-            return False
-    else:
-        return False
+# def has_virtualenvwrapper():
+#     if has_virtualenv():
+#         try:
+#             if not windows:
+#                 return '/usr' in os_call('which virtualenvwrapper.sh')
+#             else:
+#                 return False
+#         except:
+#             return False
+#     else:
+#         return False
 
 
 def create_venv(project):
     print("Creating virtualenv...")
     try:
         if not is_chicken:
-            log.debug('Trying to create virtualenv')
-            env_path = os.getenv('WORKON_HOME', './.venv_')
-            full_env_path = env_path
-            if has_virtualenvwrapper():
-                full_env_path = os.path.join(env_path, project)
-                os_call('virtualenv --clear ' + full_env_path)
-            else:
-                if has_virtualenv():
-                    full_env_path = os.path.join(env_path + project)
-                    os_call('virtualenv ' + full_env_path)
+            log.debug('Creating virtualenv')
 
-            print("\nSUCCESS!!!")
+            venv_path = os.path.join(os.getenv("HOME"), '.virtualenvs')
+            try:
+                os.makedirs(venv_path)
+            except:
+                pass
+            full_venv_path = os.path.join(venv_path, project)
+            os_call('virtualenv ' + full_venv_path)
 
-            activateL = full_env_path + '/bin/activate'
-            activateW = full_env_path + '/Scripts/activate'
-            if windows:
-                activate = activateW
-            else:
-                activate = activateL
+            print("Virtualenv created!!!\n")
 
-            if os.path.isfile(activate):
-                print("Please execute 'source " + activate +
-                      "' to enter into your virtualenv")
-                # http://stackoverflow.com/questions/6943208/activate-a-virtualenv-with-a-python-script
+            print("Installing dependencies...")
+            os_call('vex ' + project + ' pip install -r requirements.txt')
+            print("Now development depencencies... please wait a bit more.")
+            os_call('vex ' + project + ' pip install -r requirements-dev.txt')
+            print("Installed!")
 
-                if has_virtualenv():
-                    if os.path.isfile('requirements.txt'):
-                        print("Then please execute \
-                              'pip install -r requirements.txt'")
-                        # os_call('pip install -r requirements.txt')
-                    if os.path.isfile('requirements-dev.txt'):
-                        print("And after please execute \
-                              'pip install -r requirements-dev.txt'")
-                        # os_call('pip install -r requirements-dev.txt')
         return True
     except Exception, e:
         print str(e)
@@ -195,13 +206,12 @@ def main(template, chicken):
         exit(1)
 
     project = os.path.basename(os.getcwd()).replace('-', '_')
-    git_init()
+    # git_init()
     if copy_files(template):
         if rename_files(project):
             if perform_replaces(project):
                 if create_venv(project):
-                    print('\nmachete says: "Its done!"')
-                    print('\nAfter these steps, run your \
-                          app with "python run.py"')
+                    print('\nIts done!')
+                    print('\nRun with "vex ' + project + ' python run.py"')
                     print('Check for the log file under ' +
                           tempfile.gettempdir())

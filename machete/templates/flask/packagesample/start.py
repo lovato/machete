@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
+# pep8: disable-msg=E501
+# pylint: disable=C0301
+
 from flask import Flask, render_template
-from packagesample import __version__, log
-from packagesample.modules import *
+from packagesample import __version__
+# from packagesample import log
+from packagesample.modules import *  # noqa
 import __builtin__
 
 app = Flask(__name__)
