@@ -182,7 +182,7 @@ def create_venv(project):
 
             print("Installing dependencies...")
             os_call('vex ' + project + ' pip install -r requirements.txt')
-            print("Now installing development depencencies... please wait a bit more.")
+            print("Now development depencencies... please wait a bit more.")
             os_call('vex ' + project + ' pip install -r requirements-dev.txt')
             print("Installed!")
 
