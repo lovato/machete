@@ -3,6 +3,7 @@
 # pylint: disable=C0301
 
 from packagesample import __version__, log, modules
+from packagesample.modules import *  # noqa
 import argparse
 import __builtin__
 
