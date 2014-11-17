@@ -10,6 +10,4 @@ from packagesample import __version__
 def test_version():
     """ Base test to version method """
 
-    base_version = '0.0.1.0'
-
-    assert_equals(base_version, __version__)
+    assert_equals(type(__version__), str)

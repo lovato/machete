@@ -4,10 +4,9 @@
 """ Example test to check version number """
 
 from nose.tools import assert_equals  # @UnresolvedImport
-from machete import __version__
+from machete.submodule import module
 
 
-def test_version():
-    """ Base test to version method """
-
-    assert_equals(type(__version__), str)
+def test_os_call():
+    feedback = module.os_call('echo 1')
+    assert_equals(feedback, '1\n')

@@ -38,9 +38,8 @@ if os.getenv("TRAVIS_BUILD_NUMBER"):
     file_.write(os.getenv("TRAVIS_BUILD_NUMBER"))
     file_.close()
 
+__build__ = '0'
 if os.path.exists(__path('build.info')):
     __build__ = open(__path('build.info')).read().strip()
-else:
-    __build__ = '0'
 
 __version__ = __version__ + '.' + __build__
