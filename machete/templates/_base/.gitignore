@@ -1,4 +1,6 @@
-*.py[cod]
+*.pyc
+*.pyo
+*.pyd
 
 # C extensions
 *.so
@@ -42,3 +44,5 @@ tests/cover
 tests/coverage.xml
 
 .venv_*
+
+.idea
