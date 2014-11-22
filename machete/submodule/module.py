@@ -5,6 +5,7 @@ from machete import log
 import shutil
 # import errno
 import os
+from os.path import expanduser
 import subprocess
 # import stat
 import tempfile
@@ -170,7 +171,9 @@ def create_venv(project):
         if not is_chicken:
             log.debug('Creating virtualenv')
 
-            venv_path = os.path.join(os.getenv("HOME"), '.virtualenvs')
+            home_dir = expanduser('~').replace('\\', '/')
+
+            venv_path = os.path.join(home_dir, '.virtualenvs')
             try:
                 os.makedirs(venv_path)
             except:
