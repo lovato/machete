@@ -171,7 +171,7 @@ def create_venv(project):
         if not is_chicken:
             log.debug('Creating virtualenv')
 
-            home_dir = expanduser('~').replace('\\','/')
+            home_dir = expanduser('~').replace('\\', '/')
 
             venv_path = os.path.join(home_dir, '.virtualenvs')
             try:
