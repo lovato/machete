@@ -15,7 +15,8 @@ __description__ = 'Generated from a template'
 
 log_filename = os.path.join(tempfile.gettempdir(),
                             'packagesample-' + getpass.getuser() + '.log')
-log_format = '%(asctime)s %(levelname)-5s %(filename)+12s:%(lineno)03d %(message)s (%(name)s)'
+log_format = '%(asctime)s %(levelname)-5s \
+              %(filename)+12s:%(lineno)03d %(message)s (%(name)s)'
 
 logging.basicConfig(level=logging.DEBUG,
                     format=log_format,
@@ -32,6 +33,7 @@ console.setFormatter(formatter)
 logging.getLogger('').addHandler(console)
 
 log = logging.getLogger('packagesample')
+
 
 def __path(filename):
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), filename)
