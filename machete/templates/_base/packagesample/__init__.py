@@ -41,7 +41,7 @@ def __path(filename):
 # Jenkins
 if os.getenv("BUILD_NUMBER"):
     file_ = open(__path('build.info'), 'w')
-    file_.write(os.getenv("TRAVIS_BUILD_NUMBER"))
+    file_.write(os.getenv("BUILD_NUMBER"))
     file_.close()
 
 # Travis
