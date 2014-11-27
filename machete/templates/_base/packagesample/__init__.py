@@ -15,8 +15,8 @@ __description__ = 'Generated from a template'
 
 log_filename = os.path.join(tempfile.gettempdir(),
                             'packagesample-' + getpass.getuser() + '.log')
-log_format = '%(asctime)s %(levelname)-5s \
-              %(filename)+12s:%(lineno)03d %(message)s (%(name)s)'
+log_format = '%(asctime)s %(levelname)-5s '
+log_format += '%(filename)+12s:%(lineno)03d %(message)s (%(name)s)'
 
 logging.basicConfig(level=logging.DEBUG,
                     format=log_format,
