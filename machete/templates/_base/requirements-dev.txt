@@ -2,5 +2,5 @@ nose
 mock
 coverage
 flake8
-pylint
+ipdb
 coveralls
