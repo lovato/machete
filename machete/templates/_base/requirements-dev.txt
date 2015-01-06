@@ -2,4 +2,5 @@ nose
 mock
 coverage
 flake8
+ipdb
 coveralls

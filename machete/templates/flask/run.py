@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Run the app
+# Run the server
 
-from machete import start
+from packagesample import start
 start.main()
