@@ -7,9 +7,6 @@ machete
 .. image:: https://travis-ci.org/lovato/machete.png
     :target: https://travis-ci.org/lovato/machete
 
-.. image:: https://coveralls.io/repos/lovato/machete/badge.png?branch=develop 
-   :target: https://coveralls.io/r/lovato/machete?branch=develop
-
 A command-line tool to create projects from templates, to start your python work.
 
 To install it
