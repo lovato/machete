@@ -7,6 +7,10 @@ machete
 .. image:: https://travis-ci.org/lovato/machete.png
     :target: https://travis-ci.org/lovato/machete
 
+.. image:: https://img.shields.io/pypi/pyversions/machete.svg
+
+.. image:: https://img.shields.io/pypi/l/machete.svg
+
 A command-line tool to create projects from templates, to start your python work.
 
 To install it
