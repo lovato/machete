@@ -1,7 +1,7 @@
 machete
 =======
 
-.. image:: https://img.shield.io/pypi/v/machete.svg
+.. image:: https://img.shields.io/pypi/v/machete.svg
     :target: http://badge.fury.io/py/machete
 
 .. image:: https://travis-ci.org/lovato/machete.png
