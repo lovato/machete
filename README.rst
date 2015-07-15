@@ -1,23 +1,15 @@
 machete
 =======
 
-.. image:: https://pypip.in/version/machete/badge.png
+.. image:: https://img.shields.io/pypi/v/machete.svg
     :target: http://badge.fury.io/py/machete
 
 .. image:: https://travis-ci.org/lovato/machete.png
     :target: https://travis-ci.org/lovato/machete
 
-.. image:: https://pypip.in/py_versions/machete/badge.png
+.. image:: https://img.shields.io/pypi/pyversions/machete.svg
 
-.. image:: https://pypip.in/download/machete/badge.png
-        :target: https://crate.io/packages/machete?version=latest
-
-.. image:: https://coveralls.io/repos/lovato/machete/badge.png?branch=develop 
-   :target: https://coveralls.io/r/lovato/machete?branch=develop
-
-.. image:: https://pypip.in/format/machete/badge.png
-
-.. image:: https://pypip.in/license/machete/badge.png
+.. image:: https://img.shields.io/pypi/l/machete.svg
 
 A command-line tool to create projects from templates, to start your python work.
 
